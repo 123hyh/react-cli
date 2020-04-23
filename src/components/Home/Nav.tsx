@@ -1,4 +1,14 @@
 import React from 'react';
-export default function ({ className }: { className?: string }) {
-  return <div className={className}>nav</div>;
+type NavProps = {
+  /* 样式 */
+  className?: string;
+  /* 退出登录 */
+  handlerLogout: () => void;
+};
+export default function Nav({ className, handlerLogout }: NavProps) {
+  return (
+    <div className={className} onClick={() => handlerLogout()}>
+      nav
+    </div>
+  );
 }

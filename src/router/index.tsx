@@ -8,16 +8,23 @@ import Home from '@/view/Home/Home';
 export default function Routers() {
   return (
     <Router>
-      <Route exact path="/">
-        <Home />
-      </Route>
       <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
         <Route
           exact
           path="/login"
-          component={loadable(() => import('@/view/Login/Login'))}
+          component={loadable(() =>
+            import(/* webpackChunkName: "Login" */ '@/view/Login/Login')
+          )}
         />
-        <Route path="*" component={loadable(() => import('@/view/NotFind'))} />
+        <Route
+          path="*"
+          component={loadable(() =>
+            import(/* webpackChunkName: "NotFind" */ '@/view/NotFind')
+          )}
+        />
       </Switch>
     </Router>
   );
