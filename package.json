@@ -1,0 +1,44 @@
+{
+  "name": "react-hot-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./scripts/devolopment.js --devolopment",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "core-js": "^3.6.5",
+    "css-loader": "^3.5.2",
+    "html-webpack-plugin": "^4.2.0",
+    "node-sass": "^4.13.1",
+    "normalize.css": "^8.0.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.4",
+    "ts-loader": "^7.0.1",
+    "typescript": "^3.8.3",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-dev-server": "^3.10.3",
+    "yargs": "^15.3.1"
+  },
+  "dependencies": {
+    "-": "^0.0.1",
+    "D": "^1.0.0",
+    "autoprefixer": "^9.7.6",
+    "mini-css-extract-plugin": "^0.9.0",
+    "postcss-loader": "^3.0.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
