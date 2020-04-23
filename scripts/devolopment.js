@@ -1,23 +1,23 @@
-process.env.NODE_ENV = "devolopment";
-const webpack = require("webpack");
-const devCofig = require("../webpack/webpack");
-const WebpackDevServer = require("webpack-dev-server");
-const path = require("path");
+process.env.NODE_ENV = 'devolopment';
+const webpack = require('webpack');
+const devCofig = require('../webpack/webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const path = require('path');
 
 const server = new WebpackDevServer(
   webpack({
     ...devCofig,
-    mode: "development",
+    mode: 'development',
   }),
   {
     compress: true,
-    // contentBase: path.resolve(process.cwd(), "dist"),
+    contentBase: path.resolve(process.cwd(), 'dist'),
     hot: true,
-    inline: false,
     progress: true,
     quiet: true,
+    historyApiFallback: true,
     overlay: {
-      warnings: true,
+      warnings: false,
       errors: true,
     },
   }

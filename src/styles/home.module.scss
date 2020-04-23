@@ -1,0 +1,30 @@
+@import '~@/styles/mixin.scss';
+
+.home {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(200px, 1fr));
+  grid-template-rows: 50px auto;
+}
+
+.nav {
+  grid-column: 1 / 6;
+  height: 50px;
+  width: 100%;
+  @include flexLayout(center, center);
+  border-bottom: 1px solid;
+}
+
+.sidebar {
+  height: 100%;
+  width: 100%;
+  @include flexLayout(center, center);
+  border-right: 1px solid;
+}
+
+.main {
+  grid-column: 2 / 6;
+  height: 100%;
+  width: 100%;
+  @include flexLayout(center, center)
+}
