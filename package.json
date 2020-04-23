@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./scripts/devolopment.js --devolopment",
+    "build:Prod": "node ./scripts/production.js --production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -34,8 +35,6 @@
     "yargs": "^15.3.1"
   },
   "dependencies": {
-    "-": "^0.0.1",
-    "D": "^1.0.0",
     "autoprefixer": "^9.7.6",
     "mini-css-extract-plugin": "^0.9.0",
     "postcss-loader": "^3.0.0",

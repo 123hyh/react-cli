@@ -3,10 +3,11 @@ const output = require("./options/output");
 const rules = require("./options/module/rules");
 const resolve = require("./resolve");
 const plugins = require("./options/plugins");
+const argv = require("yargs").argv;
 module.exports = {
   entry: entry.entry,
   output: output.output,
-  devtool: "source-map",
+  devtool: argv.production ? "" : "source-map",
   module: {
     rules: rules.rules,
   },

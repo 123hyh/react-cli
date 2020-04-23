@@ -1,6 +1,6 @@
 process.env.NODE_ENV = "devolopment";
 const webpack = require("webpack");
-const devCofig = require("../webpack/webpack.dev");
+const devCofig = require("../webpack/webpack");
 const WebpackDevServer = require("webpack-dev-server");
 const path = require("path");
 

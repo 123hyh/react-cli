@@ -1,4 +1,5 @@
 const path = require("path");
+const argv = require("yargs").argv;
 class Output {
   constructor() {
     this.output = {

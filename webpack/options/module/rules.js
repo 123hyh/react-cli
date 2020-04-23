@@ -1,7 +1,12 @@
 const path = require("path");
+const argv = require("yargs").argv;
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 class Rules {
   constructor() {
     this.limit = { limit: 8192 };
+    this.styleLoader = argv.production
+      ? MiniCssExtractPlugin.loader
+      : "style-loader";
     this.rules = [
       {
         test: /\.tsx?$/i,
@@ -10,11 +15,11 @@ class Rules {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        use: [this.styleLoader, "css-loader", "postcss-loader"],
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
+        use: [this.styleLoader, "css-loader", "postcss-loader", "sass-loader"],
       },
       {
         test: /\.(png|svg|jpg|gif)$/i,
