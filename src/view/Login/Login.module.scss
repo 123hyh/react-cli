@@ -1,0 +1,9 @@
+@import '~@/styles/mixin.scss';
+
+.loginBox {
+  @include flexLayout(center, center)
+}
+
+.submitBtn {
+  text-align: center;
+}

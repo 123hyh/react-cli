@@ -16,6 +16,15 @@ const server = new WebpackDevServer(
     progress: true,
     quiet: true,
     historyApiFallback: true,
+    proxy: {
+      '/test': {
+        target: 'http://47.106.230.157:8080/apis',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/test': '',
+        },
+      },
+    },
     overlay: {
       warnings: false,
       errors: true,
