@@ -10,6 +10,13 @@
     "@babel/preset-react"
   ],
   "plugins": [
-    "@babel/plugin-syntax-dynamic-import"
+    /* react 路由懒加载 */
+    "@babel/plugin-syntax-dynamic-import",
+    /* antd 按需加载 */
+    ["import", {
+      "libraryName": "antd",
+      "libraryDirectory": "es",
+      "style": "css" // `style: true` 会加载 less 文件
+    }]
   ]
 }

@@ -35,7 +35,7 @@ class Rules {
         ],
       },
       {
-        test: /\.(png|svg|jpg|gif)$/i,
+        test: /\.(png|svg|jpg|gif|icon)$/i,
         use: [{ loader: 'url-loader', options: this.limit }],
       },
       {
