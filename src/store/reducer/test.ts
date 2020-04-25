@@ -7,6 +7,13 @@ export declare type TestType = {
 export const testStore = {
   testID: 1,
 };
-export function testReducer(store: TestType = testStore, action: ActionParams) {
+export function testReducer(
+  store: TestType = testStore,
+  action: ActionParams
+): TestType {
+  switch (action.type) {
+    case 'ADD_ID':
+      return { testID: store.testID += 1 };
+  }
   return store;
 }

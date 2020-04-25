@@ -1,8 +1,10 @@
 /* hooks */
-import { registerHooks } from './hooks';
+import { unloadHooks, handlerInitStoreData } from './hooks';
+
 /* user */
 import { createStore, combineReducers, Store, CombinedState } from 'redux';
-import { userReducer, userStore, UserStore } from './reducer/user';
+import { userReducer, UserStoreType, userStore } from './reducer/user';
+
 /* test */
 import { testReducer, testStore, TestType } from './reducer/test';
 
@@ -10,32 +12,36 @@ export declare type ActionParams = {
   type: string;
   payload?: any;
 };
+
 /**
  * stores 类型
  */
 export declare type StoresType = {
-  user: UserStore;
+  user: UserStoreType;
   test: TestType;
 };
 
-/* 合并 reducer */
-export const reducers = combineReducers({
+/**
+ * 合并 reducer
+ * reducer 必须抛出新的 数据，而非 在原来数据上进行修改
+ */
+const reducers = combineReducers({
   user: userReducer,
   test: testReducer,
 });
 
 /* 合并 states */
-const states: StoresType = {
+const states: StoresType = handlerInitStoreData({
   user: userStore,
   test: testStore,
-};
+});
 
 /**
  * store 类型
  */
 export type StoreInstanceType = Store<
   CombinedState<{
-    user: UserStore;
+    user: UserStoreType;
     test: TestType;
   }>,
   ActionParams
@@ -46,4 +52,4 @@ export type StoreInstanceType = Store<
  */
 export const store: StoreInstanceType = createStore(reducers, states);
 
-registerHooks(store);
+unloadHooks(store);

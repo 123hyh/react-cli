@@ -1,24 +1,46 @@
-import { ActionParams } from '../index';
-
-export declare type UserStore = {
+export declare type UserStoreType = {
   userId: string | number | null;
   isLogin: boolean;
 };
 
-export const userStore: UserStore = {
-  userId: null,
-  isLogin: false,
-};
+class User {
+  public store: UserStoreType;
+  constructor() {
+    this.store = {
+      userId: null,
+      isLogin: false,
+    };
+  }
 
-export function userReducer(
-  state: UserStore = userStore,
-  { type, payload }: ActionParams
-) {
-  switch (type) {
-    case 'checkLogin':
-      state.isLogin = true;
-      return state;
-    default:
-      return state;
+  public reducer(
+    state: UserStoreType,
+    {
+      type,
+      payload,
+    }: { type: Exclude<keyof User, 'store' | 'reducer'>; payload: any }
+  ) {
+    this[type](state, payload);
+  }
+
+  /**
+   * 登录接口
+   * @param state
+   * @param payload
+   */
+  public login(state: UserStoreType, payload: any): UserStoreType {
+    return { userId: 1, isLogin: true };
+  }
+
+  /**
+   * 退出登录
+   * @param state
+   * @param payload
+   */
+  public logout(state: UserStoreType, payload: any): UserStoreType {
+    return { userId: null, isLogin: false };
   }
 }
+
+const user = new User();
+export const userStore = user.store;
+export const userReducer = user.reducer;

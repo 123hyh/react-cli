@@ -4,11 +4,10 @@ import { Form, Input, Button } from 'antd';
 import $style from './Login.module.scss';
 import { login } from '@/api/module/user';
 /* redux */
-import { useMappedState, useDispatch } from 'redux-react-hook';
+import { useDispatch } from 'redux-react-hook';
 
 export default function Login() {
   const dispatch = useDispatch();
-  const store = useMappedState((state) => state);
   const [state, setstate] = useState({ loading: false });
   const history = useHistory();
   /**
