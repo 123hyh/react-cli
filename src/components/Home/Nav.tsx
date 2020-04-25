@@ -21,7 +21,7 @@ export default function Nav({ className }: NavProps) {
    * 退出登录
    */
   const handlerLogout = () => {
-    dispatch({ type: 'logout', dispatch });
+    dispatch({ type: 'logout' });
     history.push({ pathname: '/login' });
   };
   return (

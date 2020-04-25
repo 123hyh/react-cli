@@ -1,4 +1,6 @@
 import { login } from '@/api/module/user';
+import { Dispatch, Action } from 'redux';
+import { dispatchMiddleware } from '../dispatchMiddleware';
 
 export declare type UserStoreType = {
   userId: any;
@@ -9,65 +11,32 @@ export const userStore: UserStoreType = {
   userId: null,
   isLogin: false,
 };
-
-export const userReducer = function (
-  state: UserStoreType = userStore,
-  action: any
-) {
-  state = { ...state };
-  switch (action.type) {
-    case 'login':
-      login().then((res) => {
-        action.dispatch({ type: 'setUserData', data: res });
-      });
-      break;
-    case 'logout':
-      state.isLogin = false;
-      break;
-    case 'setUserData':
-      state.isLogin = true;
-      state.userId = action.data.id;
-      break;
-  }
-  return state;
+type UserReducer = {
+  login: (dispatch?: Dispatch) => Promise<any>;
+  logout: (dispatch?: Dispatch) => Promise<any>;
 };
-// class User {
-//   public store: UserStoreType;
-//   constructor() {
-//     this.store = store;
-//   }
 
-//   public reducer(
-//     state: UserStoreType = store,
-//     {
-//       type,
-//       payload,
-//     }: { type: Exclude<keyof User, 'store' | 'reducer'>; payload: any }
-//   ) {
-//     return state;
-//   }
+const actions: UserReducer = {
+  async login(dispatch) {
+    console.log(dispatch);
+    // dispatch && dispatch({ type: 'login', isLogin: true, sync: true });
+  },
+  async logout(dispatch) {
+    return Promise.resolve(1);
+  },
+};
 
-//   /**
-//    * 登录接口
-//    * @param state
-//    * @param payload
-//    */
-//   public login(state: UserStoreType, payload: any): UserStoreType {
-//     return { userId: 1, isLogin: true };
-//   }
-
-//   /**
-//    * 退出登录
-//    * @param state
-//    * @param payload
-//    */
-//   public logout(state: UserStoreType, payload: any): UserStoreType {
-//     return { userId: null, isLogin: false };
-//   }
-// }
-
-// const user = new User();
-/* export const userStore = user.store;
-export const userReducer = function (state: UserStoreType) {
-  return state;
-}; */
+const mutation = {
+  login(state: UserStoreType, data: any) {
+    return state;
+  },
+};
+export const userReducer = dispatchMiddleware<UserStoreType>(
+  function userReducer(
+    state = userStore,
+    { type, ...data }: any // { type: keyof UserReducer; data: any }
+  ) {
+    console.log(arguments);
+    return typeof state === 'function' ? userStore : state;
+  }
+);

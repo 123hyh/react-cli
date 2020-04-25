@@ -51,6 +51,18 @@ export type StoreInstanceType = Store<
  * store 实例
  */
 export const store: StoreInstanceType = createStore(reducers, states);
+
+/**
+ * 重置 store
+ * 传入 dispatch
+ */
+const newReducers = combineReducers({
+  user: userReducer()(store.dispatch),
+  test: testReducer,
+});
+
+store.replaceReducer(newReducers);
+
 /**
  * 订阅store的改变
  */
