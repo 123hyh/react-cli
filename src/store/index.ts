@@ -51,5 +51,8 @@ export type StoreInstanceType = Store<
  * store 实例
  */
 export const store: StoreInstanceType = createStore(reducers, states);
-
+/**
+ * 订阅store的改变
+ */
+store.subscribe((state = store.getState()) => {});
 unloadHooks(store);

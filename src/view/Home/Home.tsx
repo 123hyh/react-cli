@@ -7,12 +7,10 @@ import $style from '@/view/Home/home.module.scss';
 
 export default function Home() {
   const history = useHistory();
-  const handlerLogout = () => {
-    history.push({ pathname: '/login' });
-  };
+
   return (
     <div className={$style.home}>
-      <NavBar className={$style.nav} handlerLogout={handlerLogout} />
+      <NavBar className={$style.nav} />
       <Sidebar className={$style.sidebar} />
       <Main className={$style.main} />
     </div>

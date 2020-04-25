@@ -17,9 +17,7 @@ export default function Login() {
   const onFinish = async (...args: any[]) => {
     setstate({ loading: true });
     try {
-      const data = await login();
-
-      dispatch({ type: 'checkLogin' });
+      dispatch({ type: 'login', dispatch });
       history.push({ pathname: '/' });
     } catch (error) {
     } finally {
