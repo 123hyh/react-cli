@@ -4,7 +4,9 @@ import { Dispatch, Reducer, Action } from 'redux';
  * 初始化 reducer 的 state 必须判断是否 为 function 类型
  * @param reducer
  */
-export function dispatchMiddleware<T, K = any>(reducer: Reducer<T, Action<K>>) {
+export function dispatchMiddleware<StoreDataType, ActionParamsType = any>(
+  reducer: Reducer<StoreDataType, Action<ActionParamsType>>
+) {
   return () => {
     return (_dispatch: Dispatch) => {
       return reducer;

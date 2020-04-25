@@ -30,9 +30,11 @@ const mutation = {
     return state;
   },
 };
+let dispatch;
 export const userReducer = dispatchMiddleware<
   UserStoreType,
   { type: keyof UserReducer; payload: any }
 >(function userReducer(state = userStore, payload, initState = userStore) {
-  return typeof state === 'function' ? initState : state;
+  console.log(state);
+  return typeof state === 'function' ? ((dispatch = state), initState) : state;
 });
