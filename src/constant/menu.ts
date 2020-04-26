@@ -1,4 +1,4 @@
-[
+export default [
   { "menuCnName": "首页", "menuId": "M00", "parentId": "M" },
   { "menuCnName": "基础资料", "menuId": "M01", "parentId": "M" },
   { "menuCnName": "公司信息", "menuId": "M0106", "parentId": "M01" },
