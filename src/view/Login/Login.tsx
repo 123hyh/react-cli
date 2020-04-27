@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router';
-import { Form, Input, Button } from 'antd';
-import $style from './Login.module.scss';
-import { login } from '@/api/module/user';
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
+import { Form, Input, Button } from "antd";
+import $style from "./Login.module.scss";
 /* redux */
-import { useDispatch } from 'redux-react-hook';
+import { useDispatch } from "redux-react-hook";
+
 
 export default function Login() {
+ 
   const dispatch = useDispatch();
   const [state, setstate] = useState({ loading: false });
   const history = useHistory();
@@ -14,11 +15,18 @@ export default function Login() {
    * 点击登录事件
    * @param args
    */
+  console.log(1)
+  useEffect(()=>{
+    console.log(22)
+  },[state.loading])
   const onFinish = async (...args: any[]) => {
     setstate({ loading: true });
+ 
     try {
-      dispatch({ type: 'login' });
-      history.push({ pathname: '/' });
+      setstate({loading:true})
+      dispatch({ type: "login" });
+      return;
+      history.push({ pathname: "/" });
     } catch (error) {
     } finally {
       setstate({ loading: false });
@@ -35,14 +43,14 @@ export default function Login() {
         <Form.Item
           label="Username"
           name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
+          rules={[{ required: true, message: "Please input your username!" }]}
         >
           <Input />
         </Form.Item>
         <Form.Item
           label="Password"
           name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
+          rules={[{ required: true, message: "Please input your password!" }]}
         >
           <Input.Password />
         </Form.Item>

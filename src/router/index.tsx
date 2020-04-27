@@ -16,13 +16,13 @@ export default function Routers() {
           exact
           path="/login"
           component={loadable(() =>
-            import(/* webpackChunkName: "Login" */ '@/view/Login/Login')
+            import(/* webpackChunkName: "login" */ '@/view/Login/Login')
           )}
         />
         <Route
           path="*"
           component={loadable(() =>
-            import(/* webpackChunkName: "NotFind" */ '@/view/NotFind')
+            import(/* webpackChunkName: "notFind" */ '@/view/NotFind')
           )}
         />
       </Switch>

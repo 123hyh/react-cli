@@ -1,3 +1,5 @@
+import { hot } from "react-hot-loader/root";
+
 import React from "react";
 import Routes from "@/router";
 
@@ -7,7 +9,6 @@ import { StoreContext } from "redux-react-hook";
 /* 国际化 */
 import zhCN from "antd/es/locale/zh_CN";
 import { ConfigProvider } from "antd";
-import { hot } from "react-hot-loader/root";
 
 export default hot(function App() {
   return (
