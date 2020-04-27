@@ -12,13 +12,17 @@ export const userStore: UserStoreType = {
   isLogin: false,
 };
 type UserReducer = {
-  login: (dispatch?: Dispatch) => Promise<any>;
-  logout: (dispatch?: Dispatch) => Promise<any>;
+  login: (dispatch: Dispatch) => Promise<any>;
+  logout: (dispatch: Dispatch) => Promise<any>;
 };
 
 const actions: UserReducer = {
   async login(dispatch) {
-    // dispatch && dispatch({ type: 'login', isLogin: true, sync: true });
+    try {
+      debugger;
+    } catch (error) {
+      console.log(error);
+    }
   },
   async logout(dispatch) {
     return Promise.resolve(1);
@@ -30,11 +34,15 @@ const mutation = {
     return state;
   },
 };
-let dispatch;
-export const userReducer = dispatchMiddleware<
-  UserStoreType,
-  { type: keyof UserReducer; payload: any }
->(function userReducer(state = userStore, payload, initState = userStore) {
-  console.log(state);
-  return typeof state === 'function' ? ((dispatch = state), initState) : state;
-});
+
+export const userReducer = dispatchMiddleware<UserStoreType, keyof UserReducer>(
+  function userReducer(
+    state = userStore,
+    { type, payload, dispatch },
+    initState = userStore
+  ) {
+    debugger;
+    // actions[type] && actions[type](dispatch);
+    return state;
+  }
+);
