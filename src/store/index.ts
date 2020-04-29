@@ -2,10 +2,13 @@
 import {unloadHooks, handlerInitStoreData} from './hooks';
 
 /* user */
+// eslint-disable-next-line no-unused-vars
 import {createStore, combineReducers, Store, CombinedState} from 'redux';
+// eslint-disable-next-line no-unused-vars
 import {userReducer, UserStoreType, userStore} from './reducer/user';
 
 /* test */
+// eslint-disable-next-line no-unused-vars
 import {testReducer, testStore, TestType} from './reducer/test';
 
 export declare type ActionParams = {

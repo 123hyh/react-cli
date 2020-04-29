@@ -1,6 +1,7 @@
 import React, {forwardRef, useState, useRef} from 'react';
 import {Button} from 'antd';
 import {useMappedState, useDispatch} from 'redux-react-hook';
+// eslint-disable-next-line no-unused-vars
 import {UserStoreType} from '@/store/reducer/user';
 import {useHistory} from 'react-router-dom';
 

@@ -22,6 +22,11 @@ const handlerMenuList = (
 };
 
 import menuList from '@/constant/menu.ts';
+/**
+ * 左侧边栏组件
+ * @param {string} className 样式类名
+ * @return {JSX}
+ */
 export default function Sidebar({className}: { className?: string }) {
   const normalMenuList = handlerMenuList(menuList);
   return (

@@ -1,20 +1,21 @@
-import React, {useState, useEffect} from 'react';
-import {useHistory} from 'react-router';
+import React, {useState} from 'react';
 import {Form, Input, Button} from 'antd';
 import $style from './Login.module.scss';
 /* redux */
 import {useDispatch} from 'redux-react-hook';
-
+/**
+ * 登录页面
+ * @return {JSX}
+ */
 export default function Login() {
   const dispatch = useDispatch();
   const [state, setstate] = useState({
     loading: false,
     userInfo: {userName: 'hyh', password: '310515'},
   });
-  const history = useHistory();
   /**
    * 点击登录事件
-   * @param args
+   * @param {Array<any>} args
    */
   const onFinish = async (...args: any[]) => {
     setstate({...state, loading: true});

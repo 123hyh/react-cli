@@ -1,10 +1,13 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import loadable from './Loadable';
 
 import Home from '@/view/Home/Home';
-/* 懒加载组件 */
 
+/**
+ * 路由组件
+ *@return {JSX}
+ */
 export default function Routers() {
   return (
     <Router>

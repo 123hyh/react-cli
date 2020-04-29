@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import {ActionParams} from '../index';
 
 export declare type TestType = {
@@ -7,6 +8,12 @@ export declare type TestType = {
 export const testStore = {
   testID: 1,
 };
+/**
+ * 测试 test reducer
+ * @param {object} store
+ * @param {object} action
+ * @return {object}
+ */
 export function testReducer(
     store: TestType = testStore,
     action: ActionParams,

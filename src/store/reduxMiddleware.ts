@@ -9,8 +9,8 @@ type initReducerFn<T, U> = (
  * reducer 中间件，解决异步 action 时需要 store 实例
  * 初始化 reducer 的 state 必须判断是否 为 function 类型
  *
- * @param {function} reducer
- * @param {object} initValue 初始化state值
+ * @param {any} initializeValue 初始化state值
+ * @param {function} reducer reducer方法
  * @param {boolean} isBootstrapTrigger 初始化程序时是否触发 reducer,否则直接 返回 sate
  * @return { reducer }
  */

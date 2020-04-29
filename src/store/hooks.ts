@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import {StoreInstanceType} from '.';
 export const unloadHooks = (store: StoreInstanceType) => {
   window.addEventListener('unload', () => {
@@ -8,7 +9,8 @@ export const unloadHooks = (store: StoreInstanceType) => {
 
 /**
  * 初始化store 数据
- * @param data
+ * @param { object} initData  store的值
+ * @return {object | null}
  */
 export const handlerInitStoreData = <T>(initData: T): T => {
   const stateJSON = sessionStorage.getItem('state');
