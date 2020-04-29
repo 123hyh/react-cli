@@ -1,4 +1,3 @@
-const path = require('path');
 const argv = require('yargs').argv;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isProd = argv.production;
@@ -14,7 +13,8 @@ class Rules {
     this.rules = [
       {
         test: /\.tsx?$/i,
-        include: [path.resolve(process.cwd(), 'src')],
+        // include: [path.resolve(process.cwd(), 'src')],
+        exclude: /node_modules/,
         use: [
           'babel-loader',
           { loader: 'ts-loader' },
