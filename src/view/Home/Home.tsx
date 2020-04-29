@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router';
+import {useHistory} from 'react-router';
 import NavBar from '@/components/Home/Nav';
 import Main from '@/components/Home/Main';
 import Sidebar from '@/components/Home/Sidebar';

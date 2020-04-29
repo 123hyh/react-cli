@@ -1,0 +1,5 @@
+dist/*
+public/*
+scripts/*
+webpack/*
+node_modules/*

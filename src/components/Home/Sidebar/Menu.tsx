@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import { Menu } from 'antd';
-const { SubMenu } = Menu;
+import React from 'react';
+import {Menu} from 'antd';
+const {SubMenu} = Menu;
 import {
-  AppstoreOutlined,
   MailOutlined,
-  SettingOutlined,
 } from '@ant-design/icons';
+/**
+ * 菜单导航组件
+ * @param {Array} menuList 菜单列表
+ * @return {JSX}
+ */
 export default function MenuComponent({
   menuList,
   style,
@@ -17,8 +20,8 @@ export default function MenuComponent({
     debugger;
   };
   return (
-    <Menu onClick={handleClick} style={{ ...style }} mode="inline">
-      {menuList.map(({ children, menuId, menuCnName }) => {
+    <Menu onClick={handleClick} style={{...style}} mode="inline">
+      {menuList.map(({children, menuId, menuCnName}) => {
         return children.length ? (
           <SubMenu
             key={menuId}
@@ -29,7 +32,7 @@ export default function MenuComponent({
               </span>
             }
           >
-            <MenuComponent style={{ marginLeft: '10px' }} menuList={children} />
+            <MenuComponent style={{marginLeft: '10px'}} menuList={children} />
           </SubMenu>
         ) : (
           <Menu.Item key={menuId}>{menuCnName}</Menu.Item>

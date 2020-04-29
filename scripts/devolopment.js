@@ -13,7 +13,7 @@ const server = new WebpackDevServer(
     compress: true,
     contentBase: path.resolve(process.cwd(), 'dist'),
     hot: true,
-    progress: true,
+    // progress: true,
     quiet: true,
     historyApiFallback: true,
     proxy: {

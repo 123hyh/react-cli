@@ -1,6 +1,6 @@
-import { login } from "@/api/module/user";
-import { Dispatch } from "redux";
-import { dispatchMiddleware } from "../dispatchMiddleware";
+/* eslint-disable no-unused-vars */
+import {Store} from 'redux';
+import {reduxMiddleware} from '../reduxMiddleware';
 
 export declare type UserStoreType = {
   userId: any;
@@ -11,35 +11,39 @@ export const userStore: UserStoreType = {
   userId: null,
   isLogin: false,
 };
-type UserReducer = {
-  login: (dispatch: Dispatch) => Promise<any>;
-  logout: (dispatch: Dispatch) => Promise<any>;
+type ActionsMethod = {
+  login: any;
+  logout: any;
+  SET_USERINFO: any;
 };
 
-const actions: UserReducer = {
-  async login(dispatch) {
+type UserReducerType = {
+  [key in keyof ActionsMethod]: (store: Store, payload?: any) => any;
+};
+
+const actions: UserReducerType = {
+  async login(store, payload) {
     try {
       debugger;
+      store.dispatch({type: 'SET_USERINFO', ...payload});
     } catch (error) {
       console.log(error);
     }
+  },
+  SET_USERINFO(dispatch, payload: any) {
+    debugger;
   },
   async logout(dispatch) {
     return Promise.resolve(1);
   },
 };
 
-const mutation = {
-  login(state: UserStoreType, data: any) {
-    return state;
-  },
-};
-
-export const userReducer = dispatchMiddleware<UserStoreType, keyof UserReducer>(
-  userStore,
-  function userReducer(state, { type, payload, dispatch }) {
-    debugger;
-    // actions[type] && actions[type](dispatch);
-    return state;
+export const userReducer = reduxMiddleware<
+  UserStoreType,
+  keyof UserReducerType
+>(userStore, function userReducer(state, {type, storeInstance, ...payload}) {
+  if (actions[type]) {
+    actions[type](storeInstance, payload);
   }
-);
+  return state;
+});

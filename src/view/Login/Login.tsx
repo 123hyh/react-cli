@@ -1,27 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
-import { Form, Input, Button } from 'antd';
+import React, {useState, useEffect} from 'react';
+import {useHistory} from 'react-router';
+import {Form, Input, Button} from 'antd';
 import $style from './Login.module.scss';
 /* redux */
-import { useDispatch } from 'redux-react-hook';
+import {useDispatch} from 'redux-react-hook';
 
 export default function Login() {
   const dispatch = useDispatch();
-  const [state, setstate] = useState({ loading: false });
+  const [state, setstate] = useState({
+    loading: false,
+    userInfo: {userName: 'hyh', password: '310515'},
+  });
   const history = useHistory();
   /**
    * 点击登录事件
    * @param args
    */
   const onFinish = async (...args: any[]) => {
-    setstate({ loading: true });
+    setstate({...state, loading: true});
 
     try {
-      setstate({ loading: true });
-      dispatch({ type: 'login' });
+      setstate({...state, loading: true});
+      dispatch({type: 'login', data: state.userInfo});
     } catch (error) {
     } finally {
-      setstate({ loading: false });
+      setstate({...state, loading: false});
     }
   };
 
@@ -30,19 +33,19 @@ export default function Login() {
       <Form
         name="basic"
         onFinish={onFinish}
-        initialValues={{ username: 310515, password: 123456 }}
+        initialValues={{username: 310515, password: 123456}}
       >
         <Form.Item
           label="Username"
           name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
+          rules={[{required: true, message: 'Please input your username!'}]}
         >
           <Input />
         </Form.Item>
         <Form.Item
           label="Password"
           name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
+          rules={[{required: true, message: 'Please input your password!'}]}
         >
           <Input.Password />
         </Form.Item>

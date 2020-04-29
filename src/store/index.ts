@@ -1,12 +1,12 @@
 /* hooks */
-import { unloadHooks, handlerInitStoreData } from "./hooks";
+import {unloadHooks, handlerInitStoreData} from './hooks';
 
 /* user */
-import { createStore, combineReducers, Store, CombinedState } from "redux";
-import { userReducer, UserStoreType, userStore } from "./reducer/user";
+import {createStore, combineReducers, Store, CombinedState} from 'redux';
+import {userReducer, UserStoreType, userStore} from './reducer/user';
 
 /* test */
-import { testReducer, testStore, TestType } from "./reducer/test";
+import {testReducer, testStore, TestType} from './reducer/test';
 
 export declare type ActionParams = {
   type: string;
@@ -57,7 +57,7 @@ export const store: StoreInstanceType = createStore(reducers, states);
  * 传入 dispatch
  */
 const newReducers = combineReducers({
-  user: userReducer()(store.dispatch),
+  user: userReducer()(store),
   test: testReducer,
 });
 

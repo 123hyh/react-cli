@@ -1,4 +1,4 @@
-import { StoreInstanceType } from '.';
+import {StoreInstanceType} from '.';
 export const unloadHooks = (store: StoreInstanceType) => {
   window.addEventListener('unload', () => {
     const state = JSON.stringify(store.getState());
