@@ -1,6 +1,6 @@
-import { login } from '@/api/module/user';
-import { Dispatch } from 'redux';
-import { dispatchMiddleware } from '../dispatchMiddleware';
+import { login } from "@/api/module/user";
+import { Dispatch } from "redux";
+import { dispatchMiddleware } from "../dispatchMiddleware";
 
 export declare type UserStoreType = {
   userId: any;
@@ -36,11 +36,8 @@ const mutation = {
 };
 
 export const userReducer = dispatchMiddleware<UserStoreType, keyof UserReducer>(
-  function userReducer(
-    state = userStore,
-    { type, payload, dispatch },
-    initState = userStore
-  ) {
+  userStore,
+  function userReducer(state, { type, payload, dispatch }) {
     debugger;
     // actions[type] && actions[type](dispatch);
     return state;
