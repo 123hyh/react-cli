@@ -48,12 +48,11 @@ class Plugins {
       new webpack.DefinePlugin(CURRENT_ENV_CONFIG),
       /* dll插件 */
       isProd &&  new webpack.DllReferencePlugin({
-        context: path.resolve(process.cwd(),'scripts'),
+        context: '.',
         manifest: require(path.resolve(process.cwd(),'scripts/buildDll/vendor-manifest.json')),
       }),
       isProd && new AddAssetHtmlPlugin({
         filepath: path.resolve(process.cwd(), 'scripts/buildDll/*.dll.js'),
-        outputPath: 'dll'
       })
     ].filter(Boolean);
   }
