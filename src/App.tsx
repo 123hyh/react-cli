@@ -12,7 +12,7 @@ import {ConfigProvider} from 'antd';
 
 export default hot(function App() {
   return (
-    <ConfigProvider locale={zhCN}>
+      <ConfigProvider locale={zhCN}>
       <StoreContext.Provider value={store}>
         <Routes />
       </StoreContext.Provider>
