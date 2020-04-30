@@ -13,7 +13,6 @@ class Rules {
     this.rules = [
       {
         test: /\.tsx?$/i,
-        // include: [path.resolve(process.cwd(), 'src')],
         exclude: /node_modules/,
         use: [
           'babel-loader',

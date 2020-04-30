@@ -14,4 +14,10 @@ module.exports = {
   },
   plugins: [...plugins.plugins],
   resolve,
+  externals: {
+    react: 'React',
+    'react-dom':'ReactDOM',
+    redux: 'Redux',
+    'react-router-dom': 'ReactRouterDOM'
+  }
 };

@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import {Form, Input, Button} from 'antd';
 import $style from './Login.module.scss';
+import {preventShaking} from '@/utils/index.ts';
 /* redux */
 import {useDispatch} from 'redux-react-hook';
+console.log(preventShaking);
 /**
  * 登录页面
  * @return {JSX}

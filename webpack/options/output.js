@@ -4,6 +4,7 @@ const filename = `js/[name]${argv.production ? '.[chunkhash]' : ''}.js`;
 class Output {
   constructor() {
     this.output = {
+      publicPath: './',
       filename,
       path: path.resolve(process.cwd(), 'dist'),
     };
