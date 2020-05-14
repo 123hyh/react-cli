@@ -4,6 +4,7 @@ import $style from './Login.module.scss';
 import {preventShaking} from '@/utils/index.ts';
 /* redux */
 import {useDispatch} from 'redux-react-hook';
+import {login, getMenuList} from '@/api/module/user';
 console.log(preventShaking);
 /**
  * 登录页面
@@ -13,7 +14,7 @@ export default function Login() {
   const dispatch = useDispatch();
   const [state, setstate] = useState({
     loading: false,
-    userInfo: {userName: 'hyh', password: '310515'},
+    userInfo: {name: '黄裕辉', password: '123hyh,./'},
   });
   /**
    * 点击登录事件
@@ -24,6 +25,11 @@ export default function Login() {
 
     try {
       setstate({...state, loading: true});
+      const data = await login(state.userInfo);
+      const menuList = await getMenuList();
+      console.log(data, menuList);
+      debugger;
+
       dispatch({type: 'login', data: state.userInfo});
     } catch (error) {
     } finally {
@@ -36,11 +42,11 @@ export default function Login() {
       <Form
         name="basic"
         onFinish={onFinish}
-        initialValues={{username: 310515, password: 123456}}
+        initialValues={{name: 310515, password: 123456}}
       >
         <Form.Item
-          label="Username"
-          name="username"
+          label="name"
+          name="name"
           rules={[{required: true, message: 'Please input your username!'}]}
         >
           <Input />

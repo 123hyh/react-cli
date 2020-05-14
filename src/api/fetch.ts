@@ -10,14 +10,19 @@ type RequestParams = {
 };
 /**
  * fetch 实例
+ * @return {any}
  */
 class FetchData {
   private baseUrl: string;
+  /**
+   * 无
+   */
   constructor() {
-    this.baseUrl = '/test';
+    this.baseUrl = process.env.NODE_ENV === 'production' ? '/test': '/service';
   }
   /**
    * 查看 token 集合
+   * @return {any}
    */
   public static getAllToken() {
     return JSON.parse(JSON.stringify(FetchData.Token));
@@ -29,8 +34,8 @@ class FetchData {
 
   /**
    * 设置 token 集合
-   * @param name
-   * @param value
+   * @param {string} name key
+   * @param {string} value value
    */
   protected setToken(name: string, value: string | null) {
     if (value === null) return;
@@ -38,20 +43,28 @@ class FetchData {
   }
   /**
    * 出口方法
-   * @param param0
+   * @param {string} url 请求地址
+   * @param {object} headers 请求头
+   * @param { object } params 剩余参数
+   * @return {object}
    */
 
-  async send({ url, headers, ...params }: RequestParams) {
+  // eslint-disable-next-line require-jsdoc
+  async send({url, headers, ...params}: RequestParams) {
     let result: Promise<any> | Response;
     try {
-      headers = new Headers({ ...headers, ...FetchData.Token });
+      headers = new Headers({
+        'content-type': 'application/json',
+        ...headers, ...FetchData.Token,
+      });
       url = this.baseUrl + url;
+      params.body &&(params.body = JSON.stringify(params.body));
       result = await fetch(url, {
         ...params,
         headers,
       });
 
-      this.setToken('x-auth-token', result.headers.get('x-auth-token'));
+      this.setToken('authorization', result.headers.get('authorization'));
 
       result = await result.json();
       return result;

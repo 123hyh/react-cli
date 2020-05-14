@@ -1,10 +1,23 @@
-import { api } from '@/api/fetch';
+import {api} from '@/api/fetch';
 /**
  * 登录接口
- * @param body
+ * @param {Object} body
+ * @return {any}
  */
 export const login = (body = {}) =>
   api({
-    url: '/auth/login?userCode=hyh&password=e10adc3949ba59abbe56e057f20f883e',
+    url: '/system/login',
     method: 'POST',
+    body,
   });
+
+/**
+ * 获取菜单
+ * @return {any}
+ */
+export const getMenuList = ()=>{
+  return api({
+    url: '/system/menu',
+    method: 'GET',
+  });
+};
