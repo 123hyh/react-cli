@@ -30,7 +30,7 @@ class FetchData {
   /**
    * token 集合
    */
-  protected static Token: { [prop: string]: string } = {};
+  public static Token: { [prop: string]: string } = {};
 
   /**
    * 设置 token 集合
@@ -85,3 +85,18 @@ export const api = service.send.bind(service);
  * 获取 token集合
  */
 export const getAllToken = FetchData.getAllToken;
+
+/**
+ * 加载时获取请求头
+ */
+window.addEventListener('load', ()=>{
+  const data = sessionStorage.getItem(`fetch-headers`)??JSON.stringify({});
+  FetchData.Token = JSON.parse(data);
+});
+
+/**
+ * 卸载时保存请求头
+ */
+window.onbeforeunload = ()=>{
+  sessionStorage.setItem(`fetch-headers`, JSON.stringify(FetchData.Token) );
+};
