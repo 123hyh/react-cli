@@ -6,6 +6,7 @@ import {preventShaking} from '@/utils/index.ts';
 import {useDispatch} from 'redux-react-hook';
 import {login, getMenuList} from '@/api/module/user';
 console.log(preventShaking);
+
 /**
  * 登录页面
  * @return {JSX}
@@ -32,6 +33,7 @@ export default function Login() {
 
       dispatch({type: 'login', data: state.userInfo});
     } catch (error) {
+      console.log(error);
     } finally {
       setstate({...state, loading: false});
     }

@@ -7,6 +7,11 @@ import {
   useParams,
   useRouteMatch,
 } from 'react-router-dom';
+
+/**
+ * 测试
+ * @return {JSX}
+ */
 export default function NestingExample() {
   return (
     <Router basename="/">
@@ -34,7 +39,11 @@ export default function NestingExample() {
     </Router>
   );
 }
-
+/**
+ * home 组件
+ * @description:
+ * @return {*}
+ */
 function Home() {
   return (
     <div>
@@ -42,12 +51,16 @@ function Home() {
     </div>
   );
 }
-
+/**
+ * 测试组件
+ * @description:
+ * @return {*}
+ */
 function Topics() {
   // The `path` lets us build <Route> paths that are
   // relative to the parent route, while the `url` lets
   // us build relative links.
-  let { path, url } = useRouteMatch();
+  const {path, url} = useRouteMatch();
   return (
     <div>
       <h2>Topics</h2>
@@ -74,13 +87,17 @@ function Topics() {
     </div>
   );
 }
-
+/**
+ * 测试组件 1
+ * @description:
+ * @return {*}
+ */
 function Topic() {
   // The <Route> that rendered this component has a
   // path of `/topics/:topicId`. The `:topicId` portion
   // of the URL indicates a placeholder that we can
   // get from `useParams()`.
-  let { topicId } = useParams();
+  const {topicId} = useParams<{topicId:string}>();
 
   return (
     <div>
