@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-04-23 19:39:04
+ * @LastEditTime: 2020-12-11 08:15:03
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /react-cli/scripts/devolopment.js
+ */
 process.env.NODE_ENV = 'devolopment';
 const webpack = require('webpack');
 const devCofig = require('../webpack/webpack');
@@ -31,6 +39,13 @@ const server = new WebpackDevServer(
           '^/service': '',
         },
       },
+      '/api':{
+        target: 'http://119.29.151.93:9998',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/company': '',
+        },
+      }
     },
     overlay: {
       warnings: false,
