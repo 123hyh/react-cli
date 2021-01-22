@@ -4,6 +4,6 @@ import React from 'react';
  * @param {string} className 类
  * @return {JSX}
  */
-export default function Main({className}: { className?: string }) {
+export default function Main({ className }: { className?: string }) {
   return <div className={className}>main</div>;
 }

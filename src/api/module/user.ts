@@ -1,4 +1,4 @@
-import {api} from '@/api/fetch';
+import { api } from '@/api/fetch';
 /**
  * 登录接口
  * @param {Object} body
@@ -15,7 +15,7 @@ export const login = (body = {}) =>
  * 获取菜单
  * @return {any}
  */
-export const getMenuList = ()=>{
+export const getMenuList = () => {
   return api({
     url: '/system/menu',
     method: 'GET',

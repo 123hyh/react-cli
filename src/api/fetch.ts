@@ -18,7 +18,7 @@ class FetchData {
    * 无
    */
   constructor() {
-    this.baseUrl = process.env.NODE_ENV === 'production' ? '/test': '/service';
+    this.baseUrl = process.env.NODE_ENV === 'production' ? '/test' : '/service';
   }
   /**
    * 查看 token 集合
@@ -50,15 +50,16 @@ class FetchData {
    */
 
   // eslint-disable-next-line require-jsdoc
-  async send({url, headers, ...params}: RequestParams) {
+  async send({ url, headers, ...params }: RequestParams) {
     let result: Promise<any> | Response;
     try {
       headers = new Headers({
         'content-type': 'application/json',
-        ...headers, ...FetchData.Token,
+        ...headers,
+        ...FetchData.Token,
       });
       url = this.baseUrl + url;
-      params.body &&(params.body = JSON.stringify(params.body));
+      params.body && (params.body = JSON.stringify(params.body));
       result = await fetch(url, {
         ...params,
         headers,
@@ -89,14 +90,14 @@ export const getAllToken = FetchData.getAllToken;
 /**
  * 加载时获取请求头
  */
-window.addEventListener('load', ()=>{
-  const data = sessionStorage.getItem(`fetch-headers`)??JSON.stringify({});
+window.addEventListener('load', () => {
+  const data = sessionStorage.getItem(`fetch-headers`) ?? JSON.stringify({});
   FetchData.Token = JSON.parse(data);
 });
 
 /**
  * 卸载时保存请求头
  */
-window.onbeforeunload = ()=>{
-  sessionStorage.setItem(`fetch-headers`, JSON.stringify(FetchData.Token) );
+window.onbeforeunload = () => {
+  sessionStorage.setItem(`fetch-headers`, JSON.stringify(FetchData.Token));
 };

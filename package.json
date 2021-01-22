@@ -9,7 +9,9 @@
     "start": "node ./scripts/devolopment.js --devolopment --env=devolopment",
     "build:Prod": "node ./scripts/production.js --production --env=production",
     "build:Test": "node ./scripts/production.js --production --env=test",
-    "dll": "node ./scripts/dll.js"
+    "dll": "node ./scripts/dll.js",
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
   },
   "author": "hyh",
   "license": "ISC",
@@ -45,6 +47,7 @@
     "lint-staged": "^10.5.3",
     "node-sass": "^4.14.1",
     "normalize.css": "^8.0.1",
+    "prettier": "^2.2.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-hot-loader": "^4.13.0",
@@ -61,6 +64,7 @@
     "yargs": "^15.4.1"
   },
   "dependencies": {
+    "@umijs/fabric": "^2.5.6",
     "autoprefixer": "^9.8.6",
     "mini-css-extract-plugin": "^0.9.0",
     "postcss-loader": "^3.0.0",

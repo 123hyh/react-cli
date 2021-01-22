@@ -1,7 +1,7 @@
 @import '~@/styles/mixin.scss';
 
 .loginBox {
-  @include flexLayout(center, center)
+  @include flexLayout(center, center);
 }
 
 .submitBtn {

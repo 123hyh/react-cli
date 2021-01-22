@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import {Store} from 'redux';
-import {reduxMiddleware} from '../reduxMiddleware';
+import { Store } from 'redux';
+import { reduxMiddleware } from '../reduxMiddleware';
 
 export declare type UserStoreType = {
   userId: any;
@@ -25,7 +25,7 @@ const actions: UserReducerType = {
   async login(store, payload) {
     try {
       debugger;
-      store.dispatch({type: 'SET_USERINFO', ...payload});
+      store.dispatch({ type: 'SET_USERINFO', ...payload });
     } catch (error) {
       console.log(error);
     }
@@ -38,12 +38,12 @@ const actions: UserReducerType = {
   },
 };
 
-export const userReducer = reduxMiddleware<
-  UserStoreType,
-  keyof UserReducerType
->(userStore, function userReducer(state, {type, storeInstance, ...payload}) {
-  if (actions[type]) {
-    actions[type](storeInstance, payload);
-  }
-  return state;
-});
+export const userReducer = reduxMiddleware<UserStoreType, keyof UserReducerType>(
+  userStore,
+  function userReducer(state, { type, storeInstance, ...payload }) {
+    if (actions[type]) {
+      actions[type](storeInstance, payload);
+    }
+    return state;
+  },
+);

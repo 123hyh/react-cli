@@ -1,5 +1,5 @@
-@mixin flexLayout($JC:start, $AI:start) {
+@mixin flexLayout($JC: start, $AI: start) {
   display: flex;
-  justify-content: $JC;
   align-items: $AI;
+  justify-content: $JC;
 }

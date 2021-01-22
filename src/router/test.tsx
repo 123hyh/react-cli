@@ -60,7 +60,7 @@ function Topics() {
   // The `path` lets us build <Route> paths that are
   // relative to the parent route, while the `url` lets
   // us build relative links.
-  const {path, url} = useRouteMatch();
+  const { path, url } = useRouteMatch();
   return (
     <div>
       <h2>Topics</h2>
@@ -97,7 +97,7 @@ function Topic() {
   // path of `/topics/:topicId`. The `:topicId` portion
   // of the URL indicates a placeholder that we can
   // get from `useParams()`.
-  const {topicId} = useParams<{topicId:string}>();
+  const { topicId } = useParams<{ topicId: string }>();
 
   return (
     <div>

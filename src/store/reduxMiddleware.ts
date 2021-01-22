@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import {Store} from 'redux';
+import { Store } from 'redux';
 type initReducerFn<T, U> = (
   state: T,
-  payload: { type: U; storeInstance: Store; [prop: string]: any }
+  payload: { type: U; storeInstance: Store; [prop: string]: any },
 ) => T;
 
 /**
@@ -15,15 +15,15 @@ type initReducerFn<T, U> = (
  * @return { reducer }
  */
 export function reduxMiddleware<StateDataType, ActionParamsType>(
-    initializeValue: StateDataType,
-    reducer: initReducerFn<StateDataType, ActionParamsType>,
-    isBootstrapTrigger = false,
+  initializeValue: StateDataType,
+  reducer: initReducerFn<StateDataType, ActionParamsType>,
+  isBootstrapTrigger = false,
 ) {
   return () => {
     return (_storeInstance: Store) => {
-      return function(
-          state: StateDataType = initializeValue,
-          payload: {
+      return function (
+        state: StateDataType = initializeValue,
+        payload: {
           type: ActionParamsType;
           [prop: string]: any;
         },
@@ -32,9 +32,9 @@ export function reduxMiddleware<StateDataType, ActionParamsType>(
          * 初始化程序时 是否 调用reducer
          */
         const INIT_REDUX = /^@@redux/.test(<any>payload.type);
-        return INIT_REDUX && isBootstrapTrigger ?
-          state :
-          reducer(state, {...payload, storeInstance: _storeInstance});
+        return INIT_REDUX && isBootstrapTrigger
+          ? state
+          : reducer(state, { ...payload, storeInstance: _storeInstance });
       };
     };
   };

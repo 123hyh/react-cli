@@ -1,29 +1,29 @@
-@import "~@/styles/mixin.scss";
+@import '~@/styles/mixin.scss';
 
 .home {
-  height: 100%;
   display: flex;
   flex-wrap: wrap;
+  height: 100%;
 }
 
 $navHeight: 50px;
 .nav {
-  height: $navHeight;
   flex-basis: 100%;
-  @include flexLayout(center, center);
+  height: $navHeight;
   border-bottom: 1px solid;
+  @include flexLayout(center, center);
 }
 @mixin commonHeight {
+  box-sizing: border-box;
+  width: 100%;
   height: calc(100vh - #{$navHeight});
   max-height: calc(100vh - #{$navHeight});
-  width: 100%;
   overflow: auto;
-  box-sizing: border-box;
 }
 .sidebar {
   flex-basis: 250px;
-  @include commonHeight;
   overflow-x: hidden;
+  @include commonHeight;
 }
 
 .main {

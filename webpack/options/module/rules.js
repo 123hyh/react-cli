@@ -17,12 +17,12 @@ class Rules {
         use: [
           'babel-loader',
           { loader: 'ts-loader' },
-          !isProd && {
+          /* !isProd && {
             loader: 'eslint-loader',
             options: {
               fix: true,
             },
-          },
+          }, */
         ].filter(Boolean),
       },
       {
